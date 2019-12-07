@@ -5,6 +5,7 @@ const
   express = require('express'),
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json()); // creates express http server
+  PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
@@ -36,8 +37,7 @@ app.post('/webhook', (req, res) => {
 });
 
 app.get('/webhook', (req, res) => {
-   let VERIFY_TOKEN = "tayl0rsw1ft"
-
+  let VERIFY_TOKEN = "tayl0rsw1ft"
    // Parse the query params
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
